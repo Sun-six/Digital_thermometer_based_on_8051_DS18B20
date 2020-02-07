@@ -3,19 +3,19 @@
 //void delay_us(unsigned long count)
 //{
 ////    unsigned long timer_count;
-////    //¶¨Ê±Æ÷³õÖµ¼ÆËã
+////    //å®šæ—¶å™¨åˆå€¼è®¡ç®—
 ////    timer_count = count;
-////	//³õÊ¼»¯¶¨Ê±Æ÷0
-////	TMOD = 0x01;          //Ê¹ÓÃ¶¨Ê±Æ÷T0µÄÄ£Ê½1
+////	//åˆå§‹åŒ–å®šæ—¶å™¨0
+////	TMOD = 0x01;          //ä½¿ç”¨å®šæ—¶å™¨T0çš„æ¨¡å¼1
 ////	TF0 = 0;
 
 ////	while(timer_count)
 ////	{
 ////		unsigned long temp_count = timer_count>65536?65536:timer_count;
-////		TH0 = (65536 - temp_count) / 256; //¶¨Ê±Æ÷T0µÄ¸ß8Î»¸³³õÖµ
-////		TL0 = (65536 - temp_count) % 256; //¶¨Ê±Æ÷T0µÄµÍ8Î»¸³³õÖµ
-////		TR0 = 1;              //Æô¶¯¶¨Ê±Æ÷T0
-////		//µÈ´ı¶¨Ê±Æ÷µ½´ï
+////		TH0 = (65536 - temp_count) / 256; //å®šæ—¶å™¨T0çš„é«˜8ä½èµ‹åˆå€¼
+////		TL0 = (65536 - temp_count) % 256; //å®šæ—¶å™¨T0çš„ä½8ä½èµ‹åˆå€¼
+////		TR0 = 1;              //å¯åŠ¨å®šæ—¶å™¨T0
+////		//ç­‰å¾…å®šæ—¶å™¨åˆ°è¾¾
 ////		while(TF0 == 0);
 ////		TF0 = 0;
 ////		timer_count -= temp_count;
@@ -29,7 +29,7 @@
 ////		RET
 ////		#pragma endasm
 //}
-//ÑÓÊ±nºÁÃë
+//å»¶æ—¶næ¯«ç§’
 void delay_ms(unsigned long n)
 {
     unsigned long i=0,j=0;

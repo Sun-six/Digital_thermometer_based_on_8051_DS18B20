@@ -15,32 +15,32 @@ void main(void)
     while(1)
     {
         unsigned char i;
-		//ÏÔÊ¾Ë¢ĞÂ
-		if(ds18b20_status && !(count%20))//count¿ØÖÆ¶ÁÈ¡¼ä¸ô,ÀíÂÛcount>30·ñÔò»á³öÏÖÎŞĞ§µÄÊı¾İ
+		//æ˜¾ç¤ºåˆ·æ–°
+		if(ds18b20_status && !(count%20))//countæ§åˆ¶è¯»å–é—´éš”,ç†è®ºcount>30å¦åˆ™ä¼šå‡ºç°æ— æ•ˆçš„æ•°æ®
 		{
 			ds18b20_conversion_start();
 			ds18b20_read_status();
 			temperature_data_math = ds18b20_read_temperature();
-			if(temperature_data_math != 0x550 || count>=300)//±£Ö¤µÚÒ»´ÎÏÔÊ¾µÄ¾ÍÎªÓĞĞ§Êı¾İ
+			if(temperature_data_math != 0x550 || count>=300)//ä¿è¯ç¬¬ä¸€æ¬¡æ˜¾ç¤ºçš„å°±ä¸ºæœ‰æ•ˆæ•°æ®
 			{
-				//Êı¾İ´¦Àí
-				temperature_data[0] = (temperature_data_math&0xf000)?16:17;//·ûºÅÎ»ÏÔÊ¾
-				if(temperature_data[0] == 16)//¸ºÊı
+				//æ•°æ®å¤„ç†
+				temperature_data[0] = (temperature_data_math&0xf000)?16:17;//ç¬¦å·ä½æ˜¾ç¤º
+				if(temperature_data[0] == 16)//è´Ÿæ•°
 				{
 					temperature_data_math = (~temperature_data_math)+1;
 				}
-				temperature_data[1]=((temperature_data_math>>4)/10)>10?9:((temperature_data_math>>4)/10);//Ô½½ç´¦Àí
-				temperature_data[2]=((temperature_data_math>>4)%10)>10?9:((temperature_data_math>>4)%10);//Ô½½ç´¦Àí
+				temperature_data[1]=((temperature_data_math>>4)/10)>10?9:((temperature_data_math>>4)/10);//è¶Šç•Œå¤„ç†
+				temperature_data[2]=((temperature_data_math>>4)%10)>10?9:((temperature_data_math>>4)%10);//è¶Šç•Œå¤„ç†
 #if	0			
-				//´Ö²Ú´¦Àí
-				temperature_data[3]=((temperature_data_math&0xf)*10)/16;//Ğ¡ÊıÎ»´¦Àí
+				//ç²—ç³™å¤„ç†
+				temperature_data[3]=((temperature_data_math&0xf)*10)/16;//å°æ•°ä½å¤„ç†
 #else
-				//ËÄÉáÎåÈë´¦Àí
-				temperature_data[3]=((temperature_data_math&0xf)*10)%16>8?((temperature_data_math&0xf)*10)/16+1:((temperature_data_math&0xf)*10)/16;//Ğ¡ÊıÎ»´¦Àí
+				//å››èˆäº”å…¥å¤„ç†
+				temperature_data[3]=((temperature_data_math&0xf)*10)%16>8?((temperature_data_math&0xf)*10)/16+1:((temperature_data_math&0xf)*10)/16;//å°æ•°ä½å¤„ç†
 #endif
 			}
 		}
-        for(i = 0; i < 4; i++)//¶¯Ì¬ÏÔÊ¾¿ØÖÆ
+        for(i = 0; i < 4; i++)//åŠ¨æ€æ˜¾ç¤ºæ§åˆ¶
         {
             move_display_num_CA(temperature_data[i], i ,i==2?1:0);
 			delay_ms(10);

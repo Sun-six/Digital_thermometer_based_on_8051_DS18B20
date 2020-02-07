@@ -3,9 +3,9 @@
 #include <REGX52.H>
 #include <intrins.h>
 
-//¶¨Ê±Æ÷0Ö÷Æµ
+//å®šæ—¶å™¨0ä¸»é¢‘
 #define TIMER_0_IN_FREQ	12
-//¶¨Ê±Æ÷1Ö÷Æµ
+//å®šæ—¶å™¨1ä¸»é¢‘
 #define TIMER_1_IN_FREQ	12
 
 //void delay_us(unsigned long count);

@@ -15,29 +15,29 @@
 #define DS18B20_100US	DS18B20_50US;DS18B20_50US
 #define DS18B20_500US	DS18B20_100US;DS18B20_100US;DS18B20_100US;DS18B20_100US;DS18B20_100US
 #define DS18B20_1000US	DS18B20_500US;DS18B20_500US
-//¶ÁÈ¡Ò»¸ö×Ö½Ú
+//è¯»å–ä¸€ä¸ªå­—èŠ‚
 unsigned char ds18b20_read_byte(void)
 {
     unsigned char i, t_data = 0;
 
     for(i = 0; i < 8; i++)
     {
-        DS18B20_PIN = 0; //²úÉú¶ÁÊ±¼ä¼äÏ¶(¶Á¿ªÊ¼)
+        DS18B20_PIN = 0; //äº§ç”Ÿè¯»æ—¶é—´é—´éš™(è¯»å¼€å§‹)
         DS18B20_2US;
-        DS18B20_PIN = 1; //ÊÍ·Å×ÜÏß
-        DS18B20_8US;    //µÈ´ıDS18B20µÄÊı¾İÊä³ö
-        t_data >>= 1;    //¸ßÎ»²¹0£¬Ä¬ÈÏÒÔ0Îª×¼
+        DS18B20_PIN = 1; //é‡Šæ”¾æ€»çº¿
+        DS18B20_8US;    //ç­‰å¾…DS18B20çš„æ•°æ®è¾“å‡º
+        t_data >>= 1;    //é«˜ä½è¡¥0ï¼Œé»˜è®¤ä»¥0ä¸ºå‡†
 
         if(DS18B20_PIN) t_data |= 0x80;
 
         DS18B20_50US;
         DS18B20_10US;
-        DS18B20_PIN = 1; //ÊÍ·Å×ÜÏß,µÈ´ı¶ÁÈ¡ÏÂÒ»Î»Êı¾İ
+        DS18B20_PIN = 1; //é‡Šæ”¾æ€»çº¿,ç­‰å¾…è¯»å–ä¸‹ä¸€ä½æ•°æ®
     }
 
     return t_data;
 }
-//Ğ´ÈëÒ»¸ö×Ö½Ú
+//å†™å…¥ä¸€ä¸ªå­—èŠ‚
 void ds18b20_write_byte(unsigned char cmd)
 {
     unsigned char i;
@@ -46,14 +46,14 @@ void ds18b20_write_byte(unsigned char cmd)
     {
         DS18B20_PIN = 0;
         DS18B20_1US;
-        DS18B20_PIN = cmd & 0x01; //·¢ËÍÊµ¼ÊµÄÊı¾İÎ»
+        DS18B20_PIN = cmd & 0x01; //å‘é€å®é™…çš„æ•°æ®ä½
         DS18B20_50US;
-        DS18B20_10US; //µÈ´ıĞ´Íê³É
-        DS18B20_PIN = 1; //ÊÍ·Å×ÜÏß£¬×¼±¸ÏÂÒ»´Î·¢ËÍ
+        DS18B20_10US; //ç­‰å¾…å†™å®Œæˆ
+        DS18B20_PIN = 1; //é‡Šæ”¾æ€»çº¿ï¼Œå‡†å¤‡ä¸‹ä¸€æ¬¡å‘é€
         cmd >>= 1;
     }
 }
-//Ä£¿é³õÊ¼»¯ 1:Ä£¿é´æÔÚ 0£ºÄ£¿é²»´æÔÚ
+//æ¨¡å—åˆå§‹åŒ– 1:æ¨¡å—å­˜åœ¨ 0ï¼šæ¨¡å—ä¸å­˜åœ¨
 unsigned char ds18b20_init(void)
 {
     DS18B20_PIN = 1;
@@ -66,7 +66,7 @@ unsigned char ds18b20_init(void)
 
     return 1;
 }
-//»ñÈ¡×´Ì¬ 1:no 0:ok
+//è·å–çŠ¶æ€ 1:no 0:ok
 unsigned char ds18b20_read_status(void)
 {
     unsigned char cnt = 0;
@@ -81,7 +81,7 @@ unsigned char ds18b20_read_status(void)
     DS18B20_50US;
     DS18B20_PIN = 1;
     DS18B20_10US;
-    DS18B20_5US;      //µÈ´ıDS18B20»ØÓ¦
+    DS18B20_5US;      //ç­‰å¾…DS18B20å›åº”
 
     while(DS18B20_PIN && cnt < 200)
     {
@@ -101,7 +101,7 @@ unsigned char ds18b20_read_status(void)
 
     return 0;
 }
-//¿ªÊ¼×ª»» 0£º¿ªÆôÊ§°Ü	1£º¿ªÆô³É¹¦
+//å¼€å§‹è½¬æ¢ 0ï¼šå¼€å¯å¤±è´¥	1ï¼šå¼€å¯æˆåŠŸ
 unsigned char ds18b20_conversion_start(void)
 {
     if(ds18b20_read_status())
@@ -109,30 +109,30 @@ unsigned char ds18b20_conversion_start(void)
         return 0;
     }
 
-    ds18b20_write_byte(0xCC); //Ìø¹ıROMĞòÁĞ¼ì²â
-    ds18b20_write_byte(0x44); //Æô¶¯Ò»´ÎÎÂ¶È×ª»»
+    ds18b20_write_byte(0xCC); //è·³è¿‡ROMåºåˆ—æ£€æµ‹
+    ds18b20_write_byte(0x44); //å¯åŠ¨ä¸€æ¬¡æ¸©åº¦è½¬æ¢
     return 1;
 }
 
-//¶ÁÈ¡ÎÂ¶È
+//è¯»å–æ¸©åº¦
 unsigned short ds18b20_read_temperature(void)
 {
     unsigned char temp_H, temp_L, ret;
 
     ret = ds18b20_init();
 
-    ds18b20_write_byte(0xCC); //Ìø¹ıROMĞòÁĞ¼ì²â
-    ds18b20_write_byte(0x44); //Æô¶¯Ò»´ÎÎÂ¶È×ª»»
+    ds18b20_write_byte(0xCC); //è·³è¿‡ROMåºåˆ—æ£€æµ‹
+    ds18b20_write_byte(0x44); //å¯åŠ¨ä¸€æ¬¡æ¸©åº¦è½¬æ¢
 
     if(ds18b20_read_status())
     {
         return 0;
     }
 
-    ds18b20_write_byte(0xCC); //Ìø¹ıROMĞòÁĞ¼ì²â
-    ds18b20_write_byte(0xBE); //¶ÁÈ¡ÎÂ¶È
-    temp_L = ds18b20_read_byte(); //¶ÁÈ¡µÄÎÂ¶ÈµÍÎ»Êı¾İ
-    temp_H = ds18b20_read_byte(); //¶ÁÈ¡µÄÎÂ¶È¸ßÎ»Êı¾İ
-    return temp_L | (temp_H << 8); //ºÏ³ÉÎÂ¶È
+    ds18b20_write_byte(0xCC); //è·³è¿‡ROMåºåˆ—æ£€æµ‹
+    ds18b20_write_byte(0xBE); //è¯»å–æ¸©åº¦
+    temp_L = ds18b20_read_byte(); //è¯»å–çš„æ¸©åº¦ä½ä½æ•°æ®
+    temp_H = ds18b20_read_byte(); //è¯»å–çš„æ¸©åº¦é«˜ä½æ•°æ®
+    return temp_L | (temp_H << 8); //åˆæˆæ¸©åº¦
 }
 

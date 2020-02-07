@@ -1,7 +1,7 @@
 #include "digital_tube.h"
 
 #ifdef DIGITAL_TUBE_TYPE
-//0~FµÄÏÔÊ¾Âë£¬×îºóÁ½Î»Îª-&¿Õ°×
+//0~Fçš„æ˜¾ç¤ºç ï¼Œæœ€åä¸¤ä½ä¸º-&ç©ºç™½
 const unsigned char code Display_Pen_Code_CA[PEN_CODE_LEN]={0xc0, 0xf9, 0xa4, 0xb0, 0x99, 
 							0x92, 0x82, 0xf8, 0x80, 0x90, 0x88, 0x83, 0xc6, 
 							0xa1, 0x86, 0x8e,0xbf,0xff};
@@ -11,12 +11,12 @@ void move_display_num_CA(unsigned char num, unsigned char index ,unsigned char p
     {
         return ;
     }
-	//ÏÈ½øĞĞÎ»Ñ¡£¬ÔÙ½øĞĞ¶ÎÑ¡£¬Ôö¼ÓÏÔÊ¾ÎÈ¶¨ĞÔ
+	//å…ˆè¿›è¡Œä½é€‰ï¼Œå†è¿›è¡Œæ®µé€‰ï¼Œå¢åŠ æ˜¾ç¤ºç¨³å®šæ€§
     P2 = 0x1 << index;
     P0 = point_flag?Display_Pen_Code_CA[num]&0x7f:Display_Pen_Code_CA[num];
 }
 #else
-//0~FµÄÏÔÊ¾Âë£¬×îºóÁ½Î»Îª-&¿Õ°×
+//0~Fçš„æ˜¾ç¤ºç ï¼Œæœ€åä¸¤ä½ä¸º-&ç©ºç™½
 const unsigned char code Display_Pen_Code_CC[PEN_CODE_LEN]={0x3f, 0x06, 0x5b, 0x4f, 0x66, 
 							0x6d, 0x7d, 0x07, 0x7f, 0x6f, 0x77, 0x7c, 0x39, 
 							0x5e, 0x79, 0x71,0x40,0x00};
@@ -26,7 +26,7 @@ void move_display_num_CC(unsigned char num, unsigned char index ,unsigned char p
     {
         return ;
     }
-	//ÏÈ½øĞĞÎ»Ñ¡£¬ÔÙ½øĞĞ¶ÎÑ¡£¬Ôö¼ÓÏÔÊ¾ÎÈ¶¨ĞÔ
+	//å…ˆè¿›è¡Œä½é€‰ï¼Œå†è¿›è¡Œæ®µé€‰ï¼Œå¢åŠ æ˜¾ç¤ºç¨³å®šæ€§
     P2 = ~(0x1 << index);
     P0 = point_flag?Display_Pen_Code_CC[num]|0x80:Display_Pen_Code_CC[num];
 }

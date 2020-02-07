@@ -1,12 +1,12 @@
 #ifndef	DIGITAL_TUBE_H
 #define DIGITAL_TUBE_H
 #include <REGX52.H>
-//¿É¹©ÏÔÊ¾µÄ×Ö·û
+//å¯ä¾›æ˜¾ç¤ºçš„å­—ç¬¦
 #define PEN_CODE_LEN		18
-//ÓĞ¼¸Î»ÊıÂë¹Ü
+//æœ‰å‡ ä½æ•°ç ç®¡
 #define	DSPLAY_INDEX_LEN	4
 
-//0:¹²Òõ	1:¹²Ñô
+//0:å…±é˜´	1:å…±é˜³
 #define DIGITAL_TUBE_TYPE	1
 #if DIGITAL_TUBE_TYPE
 void move_display_num_CA(unsigned char num, unsigned char index ,unsigned char point_flag);

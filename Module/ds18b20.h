@@ -2,12 +2,12 @@
 #define DS18B20_H
 #include <REGX52.H>
 #include "delay.h"
-//¶ÁÈ¡ÎÂ¶È
+//è¯»å–æ¸©åº¦
 unsigned short ds18b20_read_temperature(void);
-//¿ªÊ¼×ª»» 0£º¿ªÆôÊ§°Ü	1£º¿ªÆô³É¹¦
+//å¼€å§‹è½¬æ¢ 0ï¼šå¼€å¯å¤±è´¥	1ï¼šå¼€å¯æˆåŠŸ
 unsigned char ds18b20_conversion_start(void);
-//»ñÈ¡×´Ì¬ 1:no 0:ok
+//è·å–çŠ¶æ€ 1:no 0:ok
 unsigned char ds18b20_read_status(void);
-//Ä£¿é³õÊ¼»¯ 1:Ä£¿é´æÔÚ 0£ºÄ£¿é²»´æÔÚ
+//æ¨¡å—åˆå§‹åŒ– 1:æ¨¡å—å­˜åœ¨ 0ï¼šæ¨¡å—ä¸å­˜åœ¨
 unsigned char ds18b20_init(void);
 #endif
