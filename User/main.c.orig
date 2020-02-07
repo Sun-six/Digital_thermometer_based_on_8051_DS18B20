@@ -1,0 +1,41 @@
+#include <reg52.h>
+
+//  sfr P0=0x80;
+
+void delay(void)
+{
+unsigned char i;
+for (i = 0; i < 255; i++);
+}
+void move_display_num(unsigned char num,unsigned char index)
+{
+	if(num>=10 || index>=4)
+	{
+		return ;
+	}
+	
+}
+void main(void)
+{
+    while (1)
+    {
+        P0 = 0xfe; //第一个灯亮
+        delay();   //调用延时函数
+        P0 = 0xfd; //第二个灯亮
+        delay();   //调用延时函数
+        P0 = 0xfb; //第三个灯亮
+        delay();   //调用延时函数
+        P0 = 0xf7; //第四个灯亮
+        delay();   //调用延时函数
+        P0 = 0xef; //第五个灯亮
+        delay();   //调用延时函数
+        P0 = 0xdf; //第六个灯亮
+        delay();   //调用延时函数
+        P0 = 0xbf; //第七个灯亮
+        delay();   //调用延时函数
+        P0 = 0x7f; //第八个灯亮
+        delay();   //调用延时函数
+		move_display_num(0,0);
+    }
+
+}

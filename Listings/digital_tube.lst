@@ -1,0 +1,61 @@
+C51 COMPILER V9.60.0.0   DIGITAL_TUBE                                                      02/07/2020 18:32:13 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DIGITAL_TUBE
+OBJECT MODULE PLACED IN .\Objects\digital_tube.obj
+COMPILER INVOKED BY: E:\develop\KEIL5.28\C51\BIN\C51.EXE Module\digital_tube.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Module)
+                    - DEBUG OBJECTEXTEND PRINT(.\Listings\digital_tube.lst) OBJECT(.\Objects\digital_tube.obj)
+
+line level    source
+
+   1          #include "digital_tube.h"
+   2          
+   3          #ifdef DIGITAL_TUBE_TYPE
+   4          //0~F的显示码，最后两位为-&空白
+   5          const unsigned char code Display_Pen_Code_CA[PEN_CODE_LEN]={0xc0, 0xf9, 0xa4, 0xb0, 0x99, 
+   6                                                                  0x92, 0x82, 0xf8, 0x80, 0x90, 0x88, 0x83, 0xc6, 
+   7                                                                  0xa1, 0x86, 0x8e,0xbf,0xff};
+   8          void move_display_num_CA(unsigned char num, unsigned char index ,unsigned char point_flag)
+   9          {
+  10   1          if(num >= PEN_CODE_LEN || index >= DSPLAY_INDEX_LEN)
+  11   1          {
+  12   2              return ;
+  13   2          }
+  14   1              //先进行位选，再进行段选，增加显示稳定性
+  15   1          P2 = 0x1 << index;
+  16   1          P0 = point_flag?Display_Pen_Code_CA[num]&0x7f:Display_Pen_Code_CA[num];
+  17   1      }
+  18          #else
+              //0~F的显示码，最后两位为-&空白
+              const unsigned char code Display_Pen_Code_CC[PEN_CODE_LEN]={0x3f, 0x06, 0x5b, 0x4f, 0x66, 
+                                                                      0x6d, 0x7d, 0x07, 0x7f, 0x6f, 0x77, 0x7c, 0x39, 
+                                                                      0x5e, 0x79, 0x71,0x40,0x00};
+              void move_display_num_CC(unsigned char num, unsigned char index ,unsigned char point_flag)
+              {
+                  if(num >= PEN_CODE_LEN || index >= DSPLAY_INDEX_LEN)
+                  {
+                      return ;
+                  }
+                      //先进行位选，再进行段选，增加显示稳定性
+                  P2 = ~(0x1 << index);
+                  P0 = point_flag?Display_Pen_Code_CC[num]|0x80:Display_Pen_Code_CC[num];
+              }
+              #endif
+  34          
+  35          
+  36          
+  37          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     57    ----
+   CONSTANT SIZE    =     18    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

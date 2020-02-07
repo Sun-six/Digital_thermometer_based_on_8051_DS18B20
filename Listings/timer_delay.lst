@@ -1,0 +1,82 @@
+C51 COMPILER V9.60.0.0   TIMER_DELAY                                                       02/02/2020 21:21:59 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TIMER_DELAY
+OBJECT MODULE PLACED IN .\Objects\timer_delay.obj
+COMPILER INVOKED BY: E:\develop\KEIL5.28\C51\BIN\C51.EXE Module\timer_delay.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Module) 
+                    -DEBUG OBJECTEXTEND PRINT(.\Listings\timer_delay.lst) OBJECT(.\Objects\timer_delay.obj)
+
+line level    source
+
+   1          #include "delay.h"
+*** WARNING C318 IN LINE 1 OF Module\timer_delay.c: can't open file 'delay.h'
+   2          void delay_us(unsigned long count)
+   3          {
+   4   1              _nop_();
+*** WARNING C206 IN LINE 4 OF Module\timer_delay.c: '_nop_': missing function-prototype
+*** ERROR C264 IN LINE 4 OF Module\timer_delay.c: intrinsic '_nop_': declaration/activation error
+   5   1          unsigned long timer_count;
+*** ERROR C141 IN LINE 5 OF Module\timer_delay.c: syntax error near 'unsigned', expected '__asm'
+*** ERROR C202 IN LINE 5 OF Module\timer_delay.c: 'timer_count': undefined identifier
+   6   1          //定时器初值计算
+   7   1          timer_count = count;
+*** ERROR C202 IN LINE 7 OF Module\timer_delay.c: 'timer_count': undefined identifier
+   8   1              //初始化定时器0
+   9   1              TMOD = 0x01;          //使用定时器T0的模式1
+*** ERROR C202 IN LINE 9 OF Module\timer_delay.c: 'TMOD': undefined identifier
+  10   1              TF0 = 0;
+*** ERROR C202 IN LINE 10 OF Module\timer_delay.c: 'TF0': undefined identifier
+  11   1      
+  12   1              while(timer_count)
+*** ERROR C202 IN LINE 12 OF Module\timer_delay.c: 'timer_count': undefined identifier
+  13   1              {
+  14   2                      unsigned long temp_count = timer_count>65536?65536:timer_count;
+*** ERROR C202 IN LINE 14 OF Module\timer_delay.c: 'timer_count': undefined identifier
+  15   2                      TH0 = (65536 - temp_count) / 256; //定时器T0的高8位赋初值
+*** ERROR C202 IN LINE 15 OF Module\timer_delay.c: 'TH0': undefined identifier
+  16   2                      TL0 = (65536 - temp_count) % 256; //定时器T0的低8位赋初值
+*** ERROR C202 IN LINE 16 OF Module\timer_delay.c: 'TL0': undefined identifier
+  17   2                      TR0 = 1;              //启动定时器T0
+*** ERROR C202 IN LINE 17 OF Module\timer_delay.c: 'TR0': undefined identifier
+  18   2                      //等待定时器到达
+  19   2                      while(TF0 == 0);
+*** ERROR C202 IN LINE 19 OF Module\timer_delay.c: 'TF0': undefined identifier
+  20   2                      TF0 = 0;
+*** ERROR C202 IN LINE 20 OF Module\timer_delay.c: 'TF0': undefined identifier
+  21   2                      timer_count -= temp_count;
+*** ERROR C202 IN LINE 21 OF Module\timer_delay.c: 'timer_count': undefined identifier
+  22   2              }
+  23   1              
+  24   1      }
+  25          void delay_ms(unsigned long count)
+  26          {
+  27   1          unsigned long timer_count;
+  28   1          //定时器初值计算
+  29   1          timer_count = count * 1000;
+  30   1              //初始化定时器0
+  31   1              TMOD = 0x01;          //使用定时器T0的模式1
+*** ERROR C202 IN LINE 31 OF Module\timer_delay.c: 'TMOD': undefined identifier
+  32   1              TF0 = 0;
+*** ERROR C202 IN LINE 32 OF Module\timer_delay.c: 'TF0': undefined identifier
+  33   1      
+  34   1              while(timer_count)
+  35   1              {
+  36   2                      unsigned long temp_count = timer_count>65536?65536:timer_count;
+C51 COMPILER V9.60.0.0   TIMER_DELAY                                                       02/02/2020 21:21:59 PAGE 2   
+
+  37   2                      TH0 = (65536 - temp_count) / 256; //定时器T0的高8位赋初值
+*** ERROR C202 IN LINE 37 OF Module\timer_delay.c: 'TH0': undefined identifier
+  38   2                      TL0 = (65536 - temp_count) % 256; //定时器T0的低8位赋初值
+*** ERROR C202 IN LINE 38 OF Module\timer_delay.c: 'TL0': undefined identifier
+  39   2                      TR0 = 1;              //启动定时器T0
+*** ERROR C202 IN LINE 39 OF Module\timer_delay.c: 'TR0': undefined identifier
+  40   2                      //等待定时器到达
+  41   2                      while(TF0 == 0);
+*** ERROR C202 IN LINE 41 OF Module\timer_delay.c: 'TF0': undefined identifier
+  42   2                      TF0 = 0;
+*** ERROR C202 IN LINE 42 OF Module\timer_delay.c: 'TF0': undefined identifier
+  43   2                      timer_count -= temp_count;
+  44   2              }
+  45   1      }
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  21 ERROR(S)

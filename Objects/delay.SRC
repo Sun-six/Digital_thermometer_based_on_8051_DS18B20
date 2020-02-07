@@ -1,0 +1,287 @@
+; .\Objects\delay.SRC generated from: Module\delay.c
+; COMPILER INVOKED BY:
+;        E:\develop\KEIL5.28\C51\BIN\C51.EXE Module\delay.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Module) DEBUG OBJECTEXTEND PRINT(.\Listings\delay.lst) SRC(.\Objects\delay.SRC)
+
+$NOMOD51
+
+NAME	DELAY
+
+P0	DATA	080H
+P1	DATA	090H
+P2	DATA	0A0H
+P3	DATA	0B0H
+AC	BIT	0D0H.6
+T0	BIT	0B0H.4
+T1	BIT	0B0H.5
+EA	BIT	0A8H.7
+T2	BIT	090H.0
+IE	DATA	0A8H
+P0_0	BIT	080H.0
+P1_0	BIT	090H.0
+P0_1	BIT	080H.1
+P2_0	BIT	0A0H.0
+P1_1	BIT	090H.1
+P0_2	BIT	080H.2
+P3_0	BIT	0B0H.0
+P2_1	BIT	0A0H.1
+P1_2	BIT	090H.2
+P0_3	BIT	080H.3
+P3_1	BIT	0B0H.1
+P2_2	BIT	0A0H.2
+P1_3	BIT	090H.3
+P0_4	BIT	080H.4
+P3_2	BIT	0B0H.2
+P2_3	BIT	0A0H.3
+P1_4	BIT	090H.4
+P0_5	BIT	080H.5
+EXF2	BIT	0C8H.6
+RD	BIT	0B0H.7
+P3_3	BIT	0B0H.3
+P2_4	BIT	0A0H.4
+P1_5	BIT	090H.5
+P0_6	BIT	080H.6
+P3_4	BIT	0B0H.4
+P2_5	BIT	0A0H.5
+P1_6	BIT	090H.6
+P0_7	BIT	080H.7
+P3_5	BIT	0B0H.5
+ES	BIT	0A8H.4
+P2_6	BIT	0A0H.6
+P1_7	BIT	090H.7
+P3_6	BIT	0B0H.6
+P2_7	BIT	0A0H.7
+IP	DATA	0B8H
+P3_7	BIT	0B0H.7
+RI	BIT	098H.0
+CY	BIT	0D0H.7
+INT0	BIT	0B0H.2
+INT1	BIT	0B0H.3
+TI	BIT	098H.1
+RCAP2H	DATA	0CBH
+PS	BIT	0B8H.4
+SP	DATA	081H
+T2EX	BIT	090H.1
+OV	BIT	0D0H.2
+RCAP2L	DATA	0CAH
+C_T2	BIT	0C8H.1
+WR	BIT	0B0H.6
+RCLK	BIT	0C8H.5
+TCLK	BIT	0C8H.4
+SBUF	DATA	099H
+PCON	DATA	087H
+SCON	DATA	098H
+TMOD	DATA	089H
+TCON	DATA	088H
+IE0	BIT	088H.1
+IE1	BIT	088H.3
+B	DATA	0F0H
+CP_RL2	BIT	0C8H.0
+ACC	DATA	0E0H
+ET0	BIT	0A8H.1
+ET1	BIT	0A8H.3
+TF0	BIT	088H.5
+ET2	BIT	0A8H.5
+TF1	BIT	088H.7
+TF2	BIT	0C8H.7
+RB8	BIT	098H.2
+TH0	DATA	08CH
+EX0	BIT	0A8H.0
+IT0	BIT	088H.0
+TH1	DATA	08DH
+EX1	BIT	0A8H.2
+TB8	BIT	098H.3
+IT1	BIT	088H.2
+TH2	DATA	0CDH
+P	BIT	0D0H.0
+SM0	BIT	098H.7
+TL0	DATA	08AH
+SM1	BIT	098H.6
+TL1	DATA	08BH
+SM2	BIT	098H.5
+TL2	DATA	0CCH
+PT0	BIT	0B8H.1
+RS0	BIT	0D0H.3
+PT1	BIT	0B8H.3
+RS1	BIT	0D0H.4
+PT2	BIT	0B8H.5
+TR0	BIT	088H.4
+TR1	BIT	088H.6
+TR2	BIT	0C8H.2
+PX0	BIT	0B8H.0
+PX1	BIT	0B8H.2
+DPH	DATA	083H
+DPL	DATA	082H
+EXEN2	BIT	0C8H.3
+REN	BIT	098H.4
+T2MOD	DATA	0C9H
+T2CON	DATA	0C8H
+RXD	BIT	0B0H.0
+TXD	BIT	0B0H.1
+F0	BIT	0D0H.5
+F1	BIT	0D0H.1
+PSW	DATA	0D0H
+?PR?_delay_us?DELAY  SEGMENT CODE 
+?DT?_delay_us?DELAY  SEGMENT DATA OVERLAYABLE 
+?PR?_delay_ms?DELAY  SEGMENT CODE 
+?DT?_delay_ms?DELAY  SEGMENT DATA OVERLAYABLE 
+	EXTRN	CODE (?C?ULCMP)
+	PUBLIC	_delay_ms
+	PUBLIC	_delay_us
+
+	RSEG  ?DT?_delay_ms?DELAY
+?_delay_ms?BYTE:
+          n?141:   DS   4
+	ORG  4
+          i?142:   DS   4
+	ORG  8
+          j?143:   DS   4
+
+	RSEG  ?DT?_delay_us?DELAY
+?_delay_us?BYTE:
+      count?040:   DS   4
+; #include "delay.h"
+; 
+; void delay_us(unsigned long count)
+
+	RSEG  ?PR?_delay_us?DELAY
+_delay_us:
+	USING	0
+			; SOURCE LINE # 3
+	MOV  	count?040+03H,R7
+	MOV  	count?040+02H,R6
+	MOV  	count?040+01H,R5
+	MOV  	count?040,R4
+; {
+			; SOURCE LINE # 4
+; //    unsigned long timer_count;
+; //    //定时器初值计算
+; //    timer_count = count;
+; //	//初始化定时器0
+; //	TMOD = 0x01;          //使用定时器T0的模式1
+; //	TF0 = 0;
+; 
+; //	while(timer_count)
+; //	{
+; //		unsigned long temp_count = timer_count>65536?65536:timer_count;
+; //		TH0 = (65536 - temp_count) / 256; //定时器T0的高8位赋初值
+; //		TL0 = (65536 - temp_count) % 256; //定时器T0的低8位赋初值
+; //		TR0 = 1;              //启动定时器T0
+; //		//等待定时器到达
+; //		while(TF0 == 0);
+; //		TF0 = 0;
+; //		timer_count -= temp_count;
+; //	}
+; 		#pragma asm
+; 	RET_DELAY:
+	  RET_DELAY:
+; 		DJNZ	R7,$;
+	  DJNZ	R7,$;
+; 		DJNZ	R6,$;
+	  DJNZ	R6,$;
+; 		DJNZ	R5,$;
+	  DJNZ	R5,$;
+; 		DJNZ	R4,$;
+	  DJNZ	R4,$;
+; 		RET
+	  RET
+; 		#pragma endasm
+; }
+			; SOURCE LINE # 31
+	RET  	
+; END OF _delay_us
+
+; //延时n毫秒
+; void delay_ms(unsigned long n)
+
+	RSEG  ?PR?_delay_ms?DELAY
+_delay_ms:
+	USING	0
+			; SOURCE LINE # 33
+	MOV  	n?141+03H,R7
+	MOV  	n?141+02H,R6
+	MOV  	n?141+01H,R5
+	MOV  	n?141,R4
+; {
+			; SOURCE LINE # 34
+;     unsigned long i=0,j=0;
+			; SOURCE LINE # 35
+	CLR  	A
+	MOV  	i?142+03H,A
+	MOV  	i?142+02H,A
+	MOV  	i?142+01H,A
+	MOV  	i?142,A
+	MOV  	j?143+03H,A
+	MOV  	j?143+02H,A
+	MOV  	j?143+01H,A
+	MOV  	j?143,A
+;     for(i=0;i<n;i++)
+			; SOURCE LINE # 36
+	MOV  	i?142+03H,A
+	MOV  	i?142+02H,A
+	MOV  	i?142+01H,A
+	MOV  	i?142,A
+?C0002:
+	MOV  	R7,n?141+03H
+	MOV  	R6,n?141+02H
+	MOV  	R5,n?141+01H
+	MOV  	R4,n?141
+	MOV  	R3,i?142+03H
+	MOV  	R2,i?142+02H
+	MOV  	R1,i?142+01H
+	MOV  	R0,i?142
+	CLR  	C
+	LCALL	?C?ULCMP
+	JNC  	?C0008
+;         for(j=0;j<2;j++);
+			; SOURCE LINE # 37
+	CLR  	A
+	MOV  	j?143+03H,A
+	MOV  	j?143+02H,A
+	MOV  	j?143+01H,A
+	MOV  	j?143,A
+?C0005:
+	CLR  	A
+	MOV  	R7,#02H
+	MOV  	R6,A
+	MOV  	R5,A
+	MOV  	R4,A
+	MOV  	R3,j?143+03H
+	MOV  	R2,j?143+02H
+	MOV  	R1,j?143+01H
+	MOV  	R0,j?143
+	CLR  	C
+	LCALL	?C?ULCMP
+	JNC  	?C0004
+	MOV  	A,j?143+03H
+	ADD  	A,#01H
+	MOV  	j?143+03H,A
+	CLR  	A
+	ADDC 	A,j?143+02H
+	MOV  	j?143+02H,A
+	CLR  	A
+	ADDC 	A,j?143+01H
+	MOV  	j?143+01H,A
+	CLR  	A
+	ADDC 	A,j?143
+	MOV  	j?143,A
+	SJMP 	?C0005
+?C0004:
+	MOV  	A,i?142+03H
+	ADD  	A,#01H
+	MOV  	i?142+03H,A
+	CLR  	A
+	ADDC 	A,i?142+02H
+	MOV  	i?142+02H,A
+	CLR  	A
+	ADDC 	A,i?142+01H
+	MOV  	i?142+01H,A
+	CLR  	A
+	ADDC 	A,i?142
+	MOV  	i?142,A
+	SJMP 	?C0002
+; }			; SOURCE LINE # 38
+?C0008:
+	RET  	
+; END OF _delay_ms
+
+	END

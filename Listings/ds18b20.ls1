@@ -1,0 +1,981 @@
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ds18b20.OBJ
+ASSEMBLER INVOKED BY: E:\develop\KEIL5.28\C51\BIN\A51.EXE .\Objects\ds18b20.src PR(.\Listings\ds18b20.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\Objects\ds18b20.SRC generated from: Module\ds18b20.c
+                       2     ; COMPILER INVOKED BY:
+                       3     ;        E:\develop\KEIL5.28\C51\BIN\C51.EXE Module\ds18b20.c OPTIMIZE(8,SPEED) BROWSE INCD
+                             IR(.\Module) DEBUG OBJECTEXTEND PRINT(.\Listings\ds18b20.lst) SRC(.\Objects\ds18b20.SRC)
+                       4     
+                       5     $nomod51 
+                       6     
+                       7     NAME    DS18B20
+                       8     
+  0080                 9     P0      DATA    080H
+  0090                10     P1      DATA    090H
+  00A0                11     P2      DATA    0A0H
+  00B0                12     P3      DATA    0B0H
+  00D6                13     AC      BIT     0D0H.6
+  00B4                14     T0      BIT     0B0H.4
+  00B5                15     T1      BIT     0B0H.5
+  00AF                16     EA      BIT     0A8H.7
+  0090                17     T2      BIT     090H.0
+  00A8                18     IE      DATA    0A8H
+  0080                19     P0_0    BIT     080H.0
+  0090                20     P1_0    BIT     090H.0
+  0081                21     P0_1    BIT     080H.1
+  00A0                22     P2_0    BIT     0A0H.0
+  0091                23     P1_1    BIT     090H.1
+  0082                24     P0_2    BIT     080H.2
+  00B0                25     P3_0    BIT     0B0H.0
+  00A1                26     P2_1    BIT     0A0H.1
+  0092                27     P1_2    BIT     090H.2
+  0083                28     P0_3    BIT     080H.3
+  00B1                29     P3_1    BIT     0B0H.1
+  00A2                30     P2_2    BIT     0A0H.2
+  0093                31     P1_3    BIT     090H.3
+  0084                32     P0_4    BIT     080H.4
+  00B2                33     P3_2    BIT     0B0H.2
+  00A3                34     P2_3    BIT     0A0H.3
+  0094                35     P1_4    BIT     090H.4
+  0085                36     P0_5    BIT     080H.5
+  00CE                37     EXF2    BIT     0C8H.6
+  00B7                38     RD      BIT     0B0H.7
+  00B3                39     P3_3    BIT     0B0H.3
+  00A4                40     P2_4    BIT     0A0H.4
+  0095                41     P1_5    BIT     090H.5
+  0086                42     P0_6    BIT     080H.6
+  00B4                43     P3_4    BIT     0B0H.4
+  00A5                44     P2_5    BIT     0A0H.5
+  0096                45     P1_6    BIT     090H.6
+  0087                46     P0_7    BIT     080H.7
+  00B5                47     P3_5    BIT     0B0H.5
+  00AC                48     ES      BIT     0A8H.4
+  00A6                49     P2_6    BIT     0A0H.6
+  0097                50     P1_7    BIT     090H.7
+  00B6                51     P3_6    BIT     0B0H.6
+  00A7                52     P2_7    BIT     0A0H.7
+  00B8                53     IP      DATA    0B8H
+  00B7                54     P3_7    BIT     0B0H.7
+  0098                55     RI      BIT     098H.0
+  00D7                56     CY      BIT     0D0H.7
+  00B2                57     INT0    BIT     0B0H.2
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     2
+
+  00B3                58     INT1    BIT     0B0H.3
+  0099                59     TI      BIT     098H.1
+  00CB                60     RCAP2H  DATA    0CBH
+  00BC                61     PS      BIT     0B8H.4
+  0081                62     SP      DATA    081H
+  0091                63     T2EX    BIT     090H.1
+  00D2                64     OV      BIT     0D0H.2
+  00CA                65     RCAP2L  DATA    0CAH
+  00C9                66     C_T2    BIT     0C8H.1
+  00B6                67     WR      BIT     0B0H.6
+  00CD                68     RCLK    BIT     0C8H.5
+  00CC                69     TCLK    BIT     0C8H.4
+  0099                70     SBUF    DATA    099H
+  0087                71     PCON    DATA    087H
+  0098                72     SCON    DATA    098H
+  0089                73     TMOD    DATA    089H
+  0088                74     TCON    DATA    088H
+  0089                75     IE0     BIT     088H.1
+  008B                76     IE1     BIT     088H.3
+  00F0                77     B       DATA    0F0H
+  00C8                78     CP_RL2  BIT     0C8H.0
+  00E0                79     ACC     DATA    0E0H
+  00A9                80     ET0     BIT     0A8H.1
+  00AB                81     ET1     BIT     0A8H.3
+  008D                82     TF0     BIT     088H.5
+  00AD                83     ET2     BIT     0A8H.5
+  008F                84     TF1     BIT     088H.7
+  00CF                85     TF2     BIT     0C8H.7
+  009A                86     RB8     BIT     098H.2
+  008C                87     TH0     DATA    08CH
+  00A8                88     EX0     BIT     0A8H.0
+  0088                89     IT0     BIT     088H.0
+  008D                90     TH1     DATA    08DH
+  00AA                91     EX1     BIT     0A8H.2
+  009B                92     TB8     BIT     098H.3
+  008A                93     IT1     BIT     088H.2
+  00CD                94     TH2     DATA    0CDH
+  00D0                95     P       BIT     0D0H.0
+  009F                96     SM0     BIT     098H.7
+  008A                97     TL0     DATA    08AH
+  009E                98     SM1     BIT     098H.6
+  008B                99     TL1     DATA    08BH
+  009D               100     SM2     BIT     098H.5
+  00CC               101     TL2     DATA    0CCH
+  00B9               102     PT0     BIT     0B8H.1
+  00D3               103     RS0     BIT     0D0H.3
+  00BB               104     PT1     BIT     0B8H.3
+  00D4               105     RS1     BIT     0D0H.4
+  00BD               106     PT2     BIT     0B8H.5
+  008C               107     TR0     BIT     088H.4
+  008E               108     TR1     BIT     088H.6
+  00CA               109     TR2     BIT     0C8H.2
+  00B8               110     PX0     BIT     0B8H.0
+  00BA               111     PX1     BIT     0B8H.2
+  0083               112     DPH     DATA    083H
+  0082               113     DPL     DATA    082H
+  00CB               114     EXEN2   BIT     0C8H.3
+  009C               115     REN     BIT     098H.4
+  00C9               116     T2MOD   DATA    0C9H
+  00C8               117     T2CON   DATA    0C8H
+  00B0               118     RXD     BIT     0B0H.0
+  00B1               119     TXD     BIT     0B0H.1
+  00D5               120     F0      BIT     0D0H.5
+  00D1               121     F1      BIT     0D0H.1
+  00D0               122     PSW     DATA    0D0H
+                     123     ?PR?ds18b20_read_byte?DS18B20            SEGMENT CODE 
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     3
+
+                     124     ?PR?_ds18b20_write_byte?DS18B20          SEGMENT CODE 
+                     125     ?PR?ds18b20_init?DS18B20                 SEGMENT CODE 
+                     126     ?PR?ds18b20_read_status?DS18B20          SEGMENT CODE 
+                     127     ?DT?ds18b20_read_status?DS18B20          SEGMENT DATA OVERLAYABLE 
+                     128     ?PR?ds18b20_conversion_start?DS18B20     SEGMENT CODE 
+                     129     ?PR?ds18b20_read_temperature?DS18B20     SEGMENT CODE 
+                     130     ?DT?ds18b20_read_temperature?DS18B20     SEGMENT DATA OVERLAYABLE 
+                     131             EXTRN   CODE (_delay_us)
+                     132             PUBLIC  ds18b20_read_temperature
+                     133             PUBLIC  ds18b20_conversion_start
+                     134             PUBLIC  ds18b20_read_status
+                     135             PUBLIC  ds18b20_init
+                     136             PUBLIC  _ds18b20_write_byte
+                     137             PUBLIC  ds18b20_read_byte
+                     138     
+----                 139             RSEG  ?DT?ds18b20_read_status?DS18B20
+0000                 140     ?ds18b20_read_status?BYTE:
+0000                 141             cnt?344:   DS   1
+0001                 142             ORG  1
+0001                 143           count?345:   DS   1
+                     144     
+----                 145             RSEG  ?DT?ds18b20_read_temperature?DS18B20
+0000                 146     ?ds18b20_read_temperature?BYTE:
+0000                 147             ret?548:   DS   1
+                     148     ; #include "ds18b20.h"
+                     149     ; 
+                     150     ; #define DS18B20_PIN   P1_0
+                     151     ; #define DS18B20_1US           _nop_()
+                     152     ; #define DS18B20_2US           DS18B20_1US;DS18B20_1US
+                     153     ; #define DS18B20_3US           DS18B20_1US;DS18B20_2US
+                     154     ; #define DS18B20_4US           DS18B20_1US;DS18B20_3US
+                     155     ; #define DS18B20_5US           DS18B20_1US;DS18B20_4US
+                     156     ; #define DS18B20_6US           DS18B20_1US;DS18B20_5US
+                     157     ; #define DS18B20_7US           DS18B20_1US;DS18B20_6US
+                     158     ; #define DS18B20_8US           DS18B20_1US;DS18B20_7US
+                     159     ; #define DS18B20_9US           DS18B20_1US;DS18B20_8US
+                     160     ; #define DS18B20_10US  DS18B20_1US;DS18B20_9US
+                     161     ; #define DS18B20_50US  DS18B20_10US;DS18B20_10US;DS18B20_10US;DS18B20_10US;DS18B20_10US
+                     162     ; #define DS18B20_100US DS18B20_50US;DS18B20_50US
+                     163     ; #define DS18B20_500US DS18B20_100US;DS18B20_100US;DS18B20_100US;DS18B20_100US;DS18B20_100
+                             US
+                     164     ; #define DS18B20_1000US        DS18B20_500US;DS18B20_500US
+                     165     ; //¶ÁÈ¡Ò»¸ö×Ö½Ú
+                     166     ; unsigned char ds18b20_read_byte(void)
+                     167     
+----                 168             RSEG  ?PR?ds18b20_read_byte?DS18B20
+0000                 169     ds18b20_read_byte:
+                     170             USING   0
+                     171                             ; SOURCE LINE # 19
+                     172     ; {
+                     173                             ; SOURCE LINE # 20
+                     174     ;     unsigned char i, t_data = 0;
+                     175                             ; SOURCE LINE # 21
+                     176     ;---- Variable 't_data?041' assigned to Register 'R7' ----
+0000 E4              177             CLR     A
+0001 FF              178             MOV     R7,A
+                     179     ; 
+                     180     ;     for(i = 0; i < 8; i++)
+                     181                             ; SOURCE LINE # 23
+                     182     ;---- Variable 'i?040' assigned to Register 'R6' ----
+0002 FE              183             MOV     R6,A
+0003                 184     ?C0001:
+0003 EE              185             MOV     A,R6
+0004 C3              186             CLR     C
+0005 9408            187             SUBB    A,#08H
+0007 7480            188             MOV     A,#080H
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     4
+
+0009 9480            189             SUBB    A,#080H
+000B 5059            190             JNC     ?C0002
+                     191     ;     {
+                     192                             ; SOURCE LINE # 24
+                     193     ;         DS18B20_PIN = 0; //²úÉú¶ÁÊ±¼ä¼äÏ¶(¶Á¿ªÊ¼)
+                     194                             ; SOURCE LINE # 25
+000D C290            195             CLR     P1_0
+                     196     ;         DS18B20_2US;
+                     197                             ; SOURCE LINE # 26
+000F 00              198             NOP     
+0010 00              199             NOP     
+                     200     ;         DS18B20_PIN = 1; //ÊÍ·Å×ÜÏß
+                     201                             ; SOURCE LINE # 27
+0011 D290            202             SETB    P1_0
+                     203     ;         DS18B20_8US;    //µÈ´DS18B20µÄÊ¾ÝÊä³ö
+                     204                             ; SOURCE LINE # 28
+0013 00              205             NOP     
+0014 00              206             NOP     
+0015 00              207             NOP     
+0016 00              208             NOP     
+0017 00              209             NOP     
+0018 00              210             NOP     
+0019 00              211             NOP     
+001A 00              212             NOP     
+                     213     ;         t_data >>= 1;    //¸ßÎ»²¹0£¬Ä¬ÈÏÒÔ0Îª×¼
+                     214                             ; SOURCE LINE # 29
+001B EF              215             MOV     A,R7
+001C C3              216             CLR     C
+001D 13              217             RRC     A
+001E FF              218             MOV     R7,A
+                     219     ; 
+                     220     ;         if(DS18B20_PIN) t_data |= 0x80;
+                     221                             ; SOURCE LINE # 31
+001F 309003          222             JNB     P1_0,?C0004
+0022 430780          223             ORL     AR7,#080H
+0025                 224     ?C0004:
+                     225     ; 
+                     226     ;         DS18B20_50US;
+                     227                             ; SOURCE LINE # 33
+0025 00              228             NOP     
+0026 00              229             NOP     
+0027 00              230             NOP     
+0028 00              231             NOP     
+0029 00              232             NOP     
+002A 00              233             NOP     
+002B 00              234             NOP     
+002C 00              235             NOP     
+002D 00              236             NOP     
+002E 00              237             NOP     
+002F 00              238             NOP     
+0030 00              239             NOP     
+0031 00              240             NOP     
+0032 00              241             NOP     
+0033 00              242             NOP     
+0034 00              243             NOP     
+0035 00              244             NOP     
+0036 00              245             NOP     
+0037 00              246             NOP     
+0038 00              247             NOP     
+0039 00              248             NOP     
+003A 00              249             NOP     
+003B 00              250             NOP     
+003C 00              251             NOP     
+003D 00              252             NOP     
+003E 00              253             NOP     
+003F 00              254             NOP     
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     5
+
+0040 00              255             NOP     
+0041 00              256             NOP     
+0042 00              257             NOP     
+0043 00              258             NOP     
+0044 00              259             NOP     
+0045 00              260             NOP     
+0046 00              261             NOP     
+0047 00              262             NOP     
+0048 00              263             NOP     
+0049 00              264             NOP     
+004A 00              265             NOP     
+004B 00              266             NOP     
+004C 00              267             NOP     
+004D 00              268             NOP     
+004E 00              269             NOP     
+004F 00              270             NOP     
+0050 00              271             NOP     
+0051 00              272             NOP     
+0052 00              273             NOP     
+0053 00              274             NOP     
+0054 00              275             NOP     
+0055 00              276             NOP     
+0056 00              277             NOP     
+                     278     ;         DS18B20_10US;
+                     279                             ; SOURCE LINE # 34
+0057 00              280             NOP     
+0058 00              281             NOP     
+0059 00              282             NOP     
+005A 00              283             NOP     
+005B 00              284             NOP     
+005C 00              285             NOP     
+005D 00              286             NOP     
+005E 00              287             NOP     
+005F 00              288             NOP     
+0060 00              289             NOP     
+                     290     ;         DS18B20_PIN = 1; //ÊÍ·Å×ÜÏß,µÈ´¶ÁÈ¡ÏÂÒ»Î»Ê¾Ý
+                     291                             ; SOURCE LINE # 35
+0061 D290            292             SETB    P1_0
+                     293     ;     }
+                     294                             ; SOURCE LINE # 36
+0063 0E              295             INC     R6
+0064 809D            296             SJMP    ?C0001
+0066                 297     ?C0002:
+                     298     ; 
+                     299     ;     return t_data;
+                     300                             ; SOURCE LINE # 38
+                     301     ; }
+                     302                             ; SOURCE LINE # 39
+0066 22              303             RET     
+                     304     ; END OF ds18b20_read_byte
+                     305     
+                     306     ; //Ð´ÈëÒ»¸ö×Ö½Ú
+                     307     ; void ds18b20_write_byte(unsigned char cmd)
+                     308     
+----                 309             RSEG  ?PR?_ds18b20_write_byte?DS18B20
+0000                 310     L?0023:
+                     311             USING   0
+0000 7FCC            312             MOV     R7,#0CCH
+0002 120000   F      313             LCALL   _ds18b20_write_byte
+0005 7F44            314             MOV     R7,#044H
+0007                 315     _ds18b20_write_byte:
+                     316             USING   0
+                     317                             ; SOURCE LINE # 41
+                     318     ;---- Variable 'cmd?142' assigned to Register 'R7' ----
+                     319     ; {
+                     320                             ; SOURCE LINE # 42
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     6
+
+                     321     ;     unsigned char i;
+                     322     ; 
+                     323     ;     for(i = 0; i < 8; i++)
+                     324                             ; SOURCE LINE # 45
+                     325     ;---- Variable 'i?143' assigned to Register 'R6' ----
+0007 E4              326             CLR     A
+0008 FE              327             MOV     R6,A
+0009                 328     ?C0006:
+0009 EE              329             MOV     A,R6
+000A C3              330             CLR     C
+000B 9408            331             SUBB    A,#08H
+000D 7480            332             MOV     A,#080H
+000F 9480            333             SUBB    A,#080H
+0011 504C            334             JNC     ?C0009
+                     335     ;     {
+                     336                             ; SOURCE LINE # 46
+                     337     ;         DS18B20_PIN = 0;
+                     338                             ; SOURCE LINE # 47
+0013 C290            339             CLR     P1_0
+                     340     ;         DS18B20_1US;
+                     341                             ; SOURCE LINE # 48
+0015 00              342             NOP     
+                     343     ;         DS18B20_PIN = cmd & 0x01; //·¢ËÍÊµ¼ÊµÄÊ¾ÝÎ»
+                     344                             ; SOURCE LINE # 49
+0016 EF              345             MOV     A,R7
+0017 13              346             RRC     A
+0018 9290            347             MOV     P1_0,C
+                     348     ;         DS18B20_50US;
+                     349                             ; SOURCE LINE # 50
+001A 00              350             NOP     
+001B 00              351             NOP     
+001C 00              352             NOP     
+001D 00              353             NOP     
+001E 00              354             NOP     
+001F 00              355             NOP     
+0020 00              356             NOP     
+0021 00              357             NOP     
+0022 00              358             NOP     
+0023 00              359             NOP     
+0024 00              360             NOP     
+0025 00              361             NOP     
+0026 00              362             NOP     
+0027 00              363             NOP     
+0028 00              364             NOP     
+0029 00              365             NOP     
+002A 00              366             NOP     
+002B 00              367             NOP     
+002C 00              368             NOP     
+002D 00              369             NOP     
+002E 00              370             NOP     
+002F 00              371             NOP     
+0030 00              372             NOP     
+0031 00              373             NOP     
+0032 00              374             NOP     
+0033 00              375             NOP     
+0034 00              376             NOP     
+0035 00              377             NOP     
+0036 00              378             NOP     
+0037 00              379             NOP     
+0038 00              380             NOP     
+0039 00              381             NOP     
+003A 00              382             NOP     
+003B 00              383             NOP     
+003C 00              384             NOP     
+003D 00              385             NOP     
+003E 00              386             NOP     
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     7
+
+003F 00              387             NOP     
+0040 00              388             NOP     
+0041 00              389             NOP     
+0042 00              390             NOP     
+0043 00              391             NOP     
+0044 00              392             NOP     
+0045 00              393             NOP     
+0046 00              394             NOP     
+0047 00              395             NOP     
+0048 00              396             NOP     
+0049 00              397             NOP     
+004A 00              398             NOP     
+004B 00              399             NOP     
+                     400     ;         DS18B20_10US; //µÈ´Ð´Íê³É
+                     401                             ; SOURCE LINE # 51
+004C 00              402             NOP     
+004D 00              403             NOP     
+004E 00              404             NOP     
+004F 00              405             NOP     
+0050 00              406             NOP     
+0051 00              407             NOP     
+0052 00              408             NOP     
+0053 00              409             NOP     
+0054 00              410             NOP     
+0055 00              411             NOP     
+                     412     ;         DS18B20_PIN = 1; //ÊÍ·Å×ÜÏß£¬×¼±¸ÏÂÒ»´Î·¢ËÍ
+                     413                             ; SOURCE LINE # 52
+0056 D290            414             SETB    P1_0
+                     415     ;         cmd >>= 1;
+                     416                             ; SOURCE LINE # 53
+0058 EF              417             MOV     A,R7
+0059 C3              418             CLR     C
+005A 13              419             RRC     A
+005B FF              420             MOV     R7,A
+                     421     ;     }
+                     422                             ; SOURCE LINE # 54
+005C 0E              423             INC     R6
+005D 80AA            424             SJMP    ?C0006
+                     425     ; }
+                     426                             ; SOURCE LINE # 55
+005F                 427     ?C0009:
+005F 22              428             RET     
+                     429     ; END OF _ds18b20_write_byte
+                     430     
+                     431     ; //Ä£¿é³õÊ¼»¯ 1:Ä£¿é´æÔÚ 0£ºÄ£¿é²»´æÔÚ
+                     432     ; unsigned char ds18b20_init(void)
+                     433     
+----                 434             RSEG  ?PR?ds18b20_init?DS18B20
+0000                 435     ds18b20_init:
+                     436             USING   0
+                     437                             ; SOURCE LINE # 57
+                     438     ; {
+                     439                             ; SOURCE LINE # 58
+                     440     ;     DS18B20_PIN = 1;
+                     441                             ; SOURCE LINE # 59
+0000 D290            442             SETB    P1_0
+                     443     ;     DS18B20_10US;
+                     444                             ; SOURCE LINE # 60
+0002 00              445             NOP     
+0003 00              446             NOP     
+0004 00              447             NOP     
+0005 00              448             NOP     
+0006 00              449             NOP     
+0007 00              450             NOP     
+0008 00              451             NOP     
+0009 00              452             NOP     
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     8
+
+000A 00              453             NOP     
+000B 00              454             NOP     
+                     455     ; 
+                     456     ;     if(ds18b20_read_status())
+                     457                             ; SOURCE LINE # 62
+000C 120000   F      458             LCALL   ds18b20_read_status
+000F EF              459             MOV     A,R7
+0010 6003            460             JZ      ?C0010
+                     461     ;     {
+                     462                             ; SOURCE LINE # 63
+                     463     ;         return 0;
+                     464                             ; SOURCE LINE # 64
+0012 7F00            465             MOV     R7,#00H
+0014 22              466             RET     
+                     467     ;     }
+                     468                             ; SOURCE LINE # 65
+0015                 469     ?C0010:
+                     470     ; 
+                     471     ;     return 1;
+                     472                             ; SOURCE LINE # 67
+0015 7F01            473             MOV     R7,#01H
+                     474     ; }
+                     475                             ; SOURCE LINE # 68
+0017                 476     ?C0011:
+0017 22              477             RET     
+                     478     ; END OF ds18b20_init
+                     479     
+                     480     ; //»ñÈ¡×´Ì¬ 1:no 0:ok
+                     481     ; unsigned char ds18b20_read_status(void)
+                     482     
+----                 483             RSEG  ?PR?ds18b20_read_status?DS18B20
+0000                 484     ds18b20_read_status:
+                     485             USING   0
+                     486                             ; SOURCE LINE # 70
+                     487     ; {
+                     488                             ; SOURCE LINE # 71
+                     489     ;     unsigned char cnt = 0;
+                     490                             ; SOURCE LINE # 72
+0000 E4              491             CLR     A
+0001 F500     F      492             MOV     cnt?344,A
+                     493     ;       unsigned char count = 700;
+                     494                             ; SOURCE LINE # 73
+0003 7500BC   F      495             MOV     count?345,#0BCH
+                     496     ;     DS18B20_PIN = 0;
+                     497                             ; SOURCE LINE # 74
+0006 C290            498             CLR     P1_0
+                     499     ; //    DS18B20_100US;
+                     500     ; //    DS18B20_100US;
+                     501     ; //    DS18B20_100US;
+                     502     ; //    DS18B20_100US;
+                     503     ; //    DS18B20_100US;
+                     504     ; //    DS18B20_100US;
+                     505     ; //    DS18B20_100US;
+                     506     ;       delay_us(700);
+                     507                             ; SOURCE LINE # 82
+0008 7FBC            508             MOV     R7,#0BCH
+000A 7E02            509             MOV     R6,#02H
+000C FD              510             MOV     R5,A
+000D FC              511             MOV     R4,A
+000E 120000   F      512             LCALL   _delay_us
+                     513     ;     DS18B20_50US;
+                     514                             ; SOURCE LINE # 83
+0011 00              515             NOP     
+0012 00              516             NOP     
+0013 00              517             NOP     
+0014 00              518             NOP     
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE     9
+
+0015 00              519             NOP     
+0016 00              520             NOP     
+0017 00              521             NOP     
+0018 00              522             NOP     
+0019 00              523             NOP     
+001A 00              524             NOP     
+001B 00              525             NOP     
+001C 00              526             NOP     
+001D 00              527             NOP     
+001E 00              528             NOP     
+001F 00              529             NOP     
+0020 00              530             NOP     
+0021 00              531             NOP     
+0022 00              532             NOP     
+0023 00              533             NOP     
+0024 00              534             NOP     
+0025 00              535             NOP     
+0026 00              536             NOP     
+0027 00              537             NOP     
+0028 00              538             NOP     
+0029 00              539             NOP     
+002A 00              540             NOP     
+002B 00              541             NOP     
+002C 00              542             NOP     
+002D 00              543             NOP     
+002E 00              544             NOP     
+002F 00              545             NOP     
+0030 00              546             NOP     
+0031 00              547             NOP     
+0032 00              548             NOP     
+0033 00              549             NOP     
+0034 00              550             NOP     
+0035 00              551             NOP     
+0036 00              552             NOP     
+0037 00              553             NOP     
+0038 00              554             NOP     
+0039 00              555             NOP     
+003A 00              556             NOP     
+003B 00              557             NOP     
+003C 00              558             NOP     
+003D 00              559             NOP     
+003E 00              560             NOP     
+003F 00              561             NOP     
+0040 00              562             NOP     
+0041 00              563             NOP     
+0042 00              564             NOP     
+                     565     ;     DS18B20_PIN = 1;
+                     566                             ; SOURCE LINE # 84
+0043 D290            567             SETB    P1_0
+                     568     ;     DS18B20_10US;
+                     569                             ; SOURCE LINE # 85
+0045 00              570             NOP     
+0046 00              571             NOP     
+0047 00              572             NOP     
+0048 00              573             NOP     
+0049 00              574             NOP     
+004A 00              575             NOP     
+004B 00              576             NOP     
+004C 00              577             NOP     
+004D 00              578             NOP     
+004E 00              579             NOP     
+                     580     ;     DS18B20_5US;      //µÈ´DS18B20»ØÓ¦
+                     581                             ; SOURCE LINE # 86
+004F 00              582             NOP     
+0050 00              583             NOP     
+0051 00              584             NOP     
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE    10
+
+0052 00              585             NOP     
+0053 00              586             NOP     
+0054                 587     ?C0012:
+                     588     ; 
+                     589     ;     while(DS18B20_PIN && cnt < 200)
+                     590                             ; SOURCE LINE # 88
+0054 30900F          591             JNB     P1_0,?C0013
+0057 C3              592             CLR     C
+0058 E500     F      593             MOV     A,cnt?344
+005A 94C8            594             SUBB    A,#0C8H
+005C 7480            595             MOV     A,#080H
+005E 9480            596             SUBB    A,#080H
+0060 5004            597             JNC     ?C0013
+                     598     ;     {
+                     599                             ; SOURCE LINE # 89
+                     600     ; //            delay_us(1);
+                     601     ;         cnt++;
+                     602                             ; SOURCE LINE # 91
+0062 0500     F      603             INC     cnt?344
+                     604     ;     }
+                     605                             ; SOURCE LINE # 92
+0064 80EE            606             SJMP    ?C0012
+0066                 607     ?C0013:
+                     608     ; 
+                     609     ;     if(cnt >= 200) return 1;
+                     610                             ; SOURCE LINE # 94
+0066 C3              611             CLR     C
+0067 E500     F      612             MOV     A,cnt?344
+0069 94C8            613             SUBB    A,#0C8H
+006B 7480            614             MOV     A,#080H
+006D 9480            615             SUBB    A,#080H
+006F 4003            616             JC      ?C0014
+0071 7F01            617             MOV     R7,#01H
+0073 22              618             RET     
+0074                 619     ?C0014:
+                     620     ; 
+                     621     ;     cnt = 0;
+                     622                             ; SOURCE LINE # 96
+0074 E4              623             CLR     A
+0075 F500     F      624             MOV     cnt?344,A
+0077                 625     ?C0016:
+                     626     ; 
+                     627     ;     while(!DS18B20_PIN && cnt < 240)
+                     628                             ; SOURCE LINE # 98
+0077 20900F          629             JB      P1_0,?C0017
+007A C3              630             CLR     C
+007B E500     F      631             MOV     A,cnt?344
+007D 94F0            632             SUBB    A,#0F0H
+007F 7480            633             MOV     A,#080H
+0081 9480            634             SUBB    A,#080H
+0083 5004            635             JNC     ?C0017
+                     636     ;     {
+                     637                             ; SOURCE LINE # 99
+                     638     ; //            delay_us(1);
+                     639     ;         cnt++;
+                     640                             ; SOURCE LINE # 101
+0085 0500     F      641             INC     cnt?344
+                     642     ;     }
+                     643                             ; SOURCE LINE # 102
+0087 80EE            644             SJMP    ?C0016
+0089                 645     ?C0017:
+                     646     ; 
+                     647     ;     if(cnt >= 240) return 1;
+                     648                             ; SOURCE LINE # 104
+0089 C3              649             CLR     C
+008A E500     F      650             MOV     A,cnt?344
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE    11
+
+008C 94F0            651             SUBB    A,#0F0H
+008E 7480            652             MOV     A,#080H
+0090 9480            653             SUBB    A,#080H
+0092 4003            654             JC      ?C0018
+0094 7F01            655             MOV     R7,#01H
+0096 22              656             RET     
+0097                 657     ?C0018:
+                     658     ; 
+                     659     ;     return 0;
+                     660                             ; SOURCE LINE # 106
+0097 7F00            661             MOV     R7,#00H
+                     662     ; }
+                     663                             ; SOURCE LINE # 107
+0099                 664     ?C0015:
+0099 22              665             RET     
+                     666     ; END OF ds18b20_read_status
+                     667     
+                     668     ; //¿ªÊ¼×ª»» 0£º¿ªÆôÊ§°Ü        1£º¿ªÆô³É¹¦
+                     669     ; unsigned char ds18b20_conversion_start(void)
+                     670     
+----                 671             RSEG  ?PR?ds18b20_conversion_start?DS18B20
+0000                 672     ds18b20_conversion_start:
+                     673             USING   0
+                     674                             ; SOURCE LINE # 109
+                     675     ; {
+                     676                             ; SOURCE LINE # 110
+                     677     ;     if(ds18b20_read_status())
+                     678                             ; SOURCE LINE # 111
+0000 120000   F      679             LCALL   ds18b20_read_status
+0003 EF              680             MOV     A,R7
+0004 6003            681             JZ      ?C0019
+                     682     ;     {
+                     683                             ; SOURCE LINE # 112
+                     684     ;         return 0;
+                     685                             ; SOURCE LINE # 113
+0006 7F00            686             MOV     R7,#00H
+0008 22              687             RET     
+                     688     ;     }
+                     689                             ; SOURCE LINE # 114
+0009                 690     ?C0019:
+                     691     ; 
+                     692     ;     ds18b20_write_byte(0xCC); //Ìø¹ROMÐòÁÐ¼ì²â
+                     693                             ; SOURCE LINE # 116
+                     694     ;     ds18b20_write_byte(0x44); //Æô¶¯Ò»´ÎÎÂ¶È×ª»»
+                     695                             ; SOURCE LINE # 117
+0009 120000   F      696             LCALL   L?0023
+                     697     ;     return 1;
+                     698                             ; SOURCE LINE # 118
+000C 7F01            699             MOV     R7,#01H
+                     700     ; }
+                     701                             ; SOURCE LINE # 119
+000E                 702     ?C0020:
+000E 22              703             RET     
+                     704     ; END OF ds18b20_conversion_start
+                     705     
+                     706     ; 
+                     707     ; //¶ÁÈ¡ÎÂ¶È
+                     708     ; unsigned short ds18b20_read_temperature(void)
+                     709     
+----                 710             RSEG  ?PR?ds18b20_read_temperature?DS18B20
+0000                 711     ds18b20_read_temperature:
+                     712             USING   0
+                     713                             ; SOURCE LINE # 122
+                     714     ; {
+                     715                             ; SOURCE LINE # 123
+                     716     ;     unsigned char temp_H, temp_L, ret;
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE    12
+
+                     717     ; 
+                     718     ;     ret = ds18b20_init();
+                     719                             ; SOURCE LINE # 126
+0000 120000   F      720             LCALL   ds18b20_init
+0003 8F00     F      721             MOV     ret?548,R7
+                     722     ; 
+                     723     ;     ds18b20_write_byte(0xCC); //Ìø¹ROMÐòÁÐ¼ì²â
+                     724                             ; SOURCE LINE # 128
+                     725     ;     ds18b20_write_byte(0x44); //Æô¶¯Ò»´ÎÎÂ¶È×ª»»
+                     726                             ; SOURCE LINE # 129
+0005 120000   F      727             LCALL   L?0023
+                     728     ; 
+                     729     ;     if(ds18b20_read_status())
+                     730                             ; SOURCE LINE # 131
+0008 120000   F      731             LCALL   ds18b20_read_status
+000B EF              732             MOV     A,R7
+000C 6004            733             JZ      ?C0021
+                     734     ;     {
+                     735                             ; SOURCE LINE # 132
+                     736     ;         return 0;
+                     737                             ; SOURCE LINE # 133
+000E E4              738             CLR     A
+000F FE              739             MOV     R6,A
+0010 FF              740             MOV     R7,A
+0011 22              741             RET     
+                     742     ;     }
+                     743                             ; SOURCE LINE # 134
+0012                 744     ?C0021:
+                     745     ; 
+                     746     ;     ds18b20_write_byte(0xCC); //Ìø¹ROMÐòÁÐ¼ì²â
+                     747                             ; SOURCE LINE # 136
+0012 7FCC            748             MOV     R7,#0CCH
+0014 120000   F      749             LCALL   _ds18b20_write_byte
+                     750     ;     ds18b20_write_byte(0xBE); //¶ÁÈ¡ÎÂ¶È
+                     751                             ; SOURCE LINE # 137
+0017 7FBE            752             MOV     R7,#0BEH
+0019 120000   F      753             LCALL   _ds18b20_write_byte
+                     754     ;     temp_L = ds18b20_read_byte(); //¶ÁÈ¡µÄÎÂ¶ÈµÍÎ»Ê¾Ý
+                     755                             ; SOURCE LINE # 138
+001C 120000   F      756             LCALL   ds18b20_read_byte
+                     757     ;---- Variable 'temp_L?547' assigned to Register 'R5' ----
+001F AD07            758             MOV     R5,AR7
+                     759     ;     temp_H = ds18b20_read_byte(); //¶ÁÈ¡µÄÎÂ¶È¸ßÎ»Ê¾Ý
+                     760                             ; SOURCE LINE # 139
+0021 120000   F      761             LCALL   ds18b20_read_byte
+                     762     ;---- Variable 'temp_H?546' assigned to Register 'R7' ----
+                     763     ;     return temp_L | (temp_H << 8); //ºÏ³ÉÎÂ¶È
+                     764                             ; SOURCE LINE # 140
+0024 EF              765             MOV     A,R7
+0025 FE              766             MOV     R6,A
+0026 ED              767             MOV     A,R5
+0027 FF              768             MOV     R7,A
+                     769     ; }
+                     770                             ; SOURCE LINE # 141
+0028                 771     ?C0022:
+0028 22              772             RET     
+                     773     ; END OF ds18b20_read_temperature
+                     774     
+                     775             END
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE    13
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                               T Y P E  V A L U E   ATTRIBUTES
+
+?C0001 . . . . . . . . . . . . . . .  C ADDR   0003H   R   SEG=?PR?DS18B20_READ_BYTE?DS18B20
+?C0002 . . . . . . . . . . . . . . .  C ADDR   0066H   R   SEG=?PR?DS18B20_READ_BYTE?DS18B20
+?C0004 . . . . . . . . . . . . . . .  C ADDR   0025H   R   SEG=?PR?DS18B20_READ_BYTE?DS18B20
+?C0006 . . . . . . . . . . . . . . .  C ADDR   0009H   R   SEG=?PR?_DS18B20_WRITE_BYTE?DS18B20
+?C0009 . . . . . . . . . . . . . . .  C ADDR   005FH   R   SEG=?PR?_DS18B20_WRITE_BYTE?DS18B20
+?C0010 . . . . . . . . . . . . . . .  C ADDR   0015H   R   SEG=?PR?DS18B20_INIT?DS18B20
+?C0011 . . . . . . . . . . . . . . .  C ADDR   0017H   R   SEG=?PR?DS18B20_INIT?DS18B20
+?C0012 . . . . . . . . . . . . . . .  C ADDR   0054H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0013 . . . . . . . . . . . . . . .  C ADDR   0066H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0014 . . . . . . . . . . . . . . .  C ADDR   0074H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0015 . . . . . . . . . . . . . . .  C ADDR   0099H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0016 . . . . . . . . . . . . . . .  C ADDR   0077H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0017 . . . . . . . . . . . . . . .  C ADDR   0089H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0018 . . . . . . . . . . . . . . .  C ADDR   0097H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+?C0019 . . . . . . . . . . . . . . .  C ADDR   0009H   R   SEG=?PR?DS18B20_CONVERSION_START?DS18B20
+?C0020 . . . . . . . . . . . . . . .  C ADDR   000EH   R   SEG=?PR?DS18B20_CONVERSION_START?DS18B20
+?C0021 . . . . . . . . . . . . . . .  C ADDR   0012H   R   SEG=?PR?DS18B20_READ_TEMPERATURE?DS18B20
+?C0022 . . . . . . . . . . . . . . .  C ADDR   0028H   R   SEG=?PR?DS18B20_READ_TEMPERATURE?DS18B20
+?DS18B20_READ_STATUS?BYTE. . . . . .  D ADDR   0000H   R   SEG=?DT?DS18B20_READ_STATUS?DS18B20
+?DS18B20_READ_TEMPERATURE?BYTE . . .  D ADDR   0000H   R   SEG=?DT?DS18B20_READ_TEMPERATURE?DS18B20
+?DT?DS18B20_READ_STATUS?DS18B20. . .  D SEG    0002H       REL=UNIT
+?DT?DS18B20_READ_TEMPERATURE?DS18B20  D SEG    0001H       REL=UNIT
+?PR?DS18B20_CONVERSION_START?DS18B20  C SEG    000FH       REL=UNIT
+?PR?DS18B20_INIT?DS18B20 . . . . . .  C SEG    0018H       REL=UNIT
+?PR?DS18B20_READ_BYTE?DS18B20. . . .  C SEG    0067H       REL=UNIT
+?PR?DS18B20_READ_STATUS?DS18B20. . .  C SEG    009AH       REL=UNIT
+?PR?DS18B20_READ_TEMPERATURE?DS18B20  C SEG    0029H       REL=UNIT
+?PR?_DS18B20_WRITE_BYTE?DS18B20. . .  C SEG    0060H       REL=UNIT
+AC . . . . . . . . . . . . . . . . .  B ADDR   00D0H.6 A   
+ACC. . . . . . . . . . . . . . . . .  D ADDR   00E0H   A   
+AR7. . . . . . . . . . . . . . . . .  D ADDR   0007H   A   
+B. . . . . . . . . . . . . . . . . .  D ADDR   00F0H   A   
+CNT?344. . . . . . . . . . . . . . .  D ADDR   0000H   R   SEG=?DT?DS18B20_READ_STATUS?DS18B20
+COUNT?345. . . . . . . . . . . . . .  D ADDR   0001H   R   SEG=?DT?DS18B20_READ_STATUS?DS18B20
+CP_RL2 . . . . . . . . . . . . . . .  B ADDR   00C8H.0 A   
+CY . . . . . . . . . . . . . . . . .  B ADDR   00D0H.7 A   
+C_T2 . . . . . . . . . . . . . . . .  B ADDR   00C8H.1 A   
+DPH. . . . . . . . . . . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . . . . . . . . . . .  D ADDR   0082H   A   
+DS18B20. . . . . . . . . . . . . . .  N NUMB   -----       
+DS18B20_CONVERSION_START . . . . . .  C ADDR   0000H   R   SEG=?PR?DS18B20_CONVERSION_START?DS18B20
+DS18B20_INIT . . . . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?DS18B20_INIT?DS18B20
+DS18B20_READ_BYTE. . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?DS18B20_READ_BYTE?DS18B20
+DS18B20_READ_STATUS. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?DS18B20_READ_STATUS?DS18B20
+DS18B20_READ_TEMPERATURE . . . . . .  C ADDR   0000H   R   SEG=?PR?DS18B20_READ_TEMPERATURE?DS18B20
+EA . . . . . . . . . . . . . . . . .  B ADDR   00A8H.7 A   
+ES . . . . . . . . . . . . . . . . .  B ADDR   00A8H.4 A   
+ET0. . . . . . . . . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . . . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2. . . . . . . . . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . . . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . . . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2. . . . . . . . . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . . . . . . . . . . .  B ADDR   00C8H.6 A   
+F0 . . . . . . . . . . . . . . . . .  B ADDR   00D0H.5 A   
+F1 . . . . . . . . . . . . . . . . .  B ADDR   00D0H.1 A   
+IE . . . . . . . . . . . . . . . . .  D ADDR   00A8H   A   
+IE0. . . . . . . . . . . . . . . . .  B ADDR   0088H.1 A   
+IE1. . . . . . . . . . . . . . . . .  B ADDR   0088H.3 A   
+INT0 . . . . . . . . . . . . . . . .  B ADDR   00B0H.2 A   
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE    14
+
+INT1 . . . . . . . . . . . . . . . .  B ADDR   00B0H.3 A   
+IP . . . . . . . . . . . . . . . . .  D ADDR   00B8H   A   
+IT0. . . . . . . . . . . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . . . . . . . . . . .  B ADDR   0088H.2 A   
+L?0023 . . . . . . . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?_DS18B20_WRITE_BYTE?DS18B20
+OV . . . . . . . . . . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . . . . . . . . . . .  B ADDR   00D0H.0 A   
+P0 . . . . . . . . . . . . . . . . .  D ADDR   0080H   A   
+P0_0 . . . . . . . . . . . . . . . .  B ADDR   0080H.0 A   
+P0_1 . . . . . . . . . . . . . . . .  B ADDR   0080H.1 A   
+P0_2 . . . . . . . . . . . . . . . .  B ADDR   0080H.2 A   
+P0_3 . . . . . . . . . . . . . . . .  B ADDR   0080H.3 A   
+P0_4 . . . . . . . . . . . . . . . .  B ADDR   0080H.4 A   
+P0_5 . . . . . . . . . . . . . . . .  B ADDR   0080H.5 A   
+P0_6 . . . . . . . . . . . . . . . .  B ADDR   0080H.6 A   
+P0_7 . . . . . . . . . . . . . . . .  B ADDR   0080H.7 A   
+P1 . . . . . . . . . . . . . . . . .  D ADDR   0090H   A   
+P1_0 . . . . . . . . . . . . . . . .  B ADDR   0090H.0 A   
+P1_1 . . . . . . . . . . . . . . . .  B ADDR   0090H.1 A   
+P1_2 . . . . . . . . . . . . . . . .  B ADDR   0090H.2 A   
+P1_3 . . . . . . . . . . . . . . . .  B ADDR   0090H.3 A   
+P1_4 . . . . . . . . . . . . . . . .  B ADDR   0090H.4 A   
+P1_5 . . . . . . . . . . . . . . . .  B ADDR   0090H.5 A   
+P1_6 . . . . . . . . . . . . . . . .  B ADDR   0090H.6 A   
+P1_7 . . . . . . . . . . . . . . . .  B ADDR   0090H.7 A   
+P2 . . . . . . . . . . . . . . . . .  D ADDR   00A0H   A   
+P2_0 . . . . . . . . . . . . . . . .  B ADDR   00A0H.0 A   
+P2_1 . . . . . . . . . . . . . . . .  B ADDR   00A0H.1 A   
+P2_2 . . . . . . . . . . . . . . . .  B ADDR   00A0H.2 A   
+P2_3 . . . . . . . . . . . . . . . .  B ADDR   00A0H.3 A   
+P2_4 . . . . . . . . . . . . . . . .  B ADDR   00A0H.4 A   
+P2_5 . . . . . . . . . . . . . . . .  B ADDR   00A0H.5 A   
+P2_6 . . . . . . . . . . . . . . . .  B ADDR   00A0H.6 A   
+P2_7 . . . . . . . . . . . . . . . .  B ADDR   00A0H.7 A   
+P3 . . . . . . . . . . . . . . . . .  D ADDR   00B0H   A   
+P3_0 . . . . . . . . . . . . . . . .  B ADDR   00B0H.0 A   
+P3_1 . . . . . . . . . . . . . . . .  B ADDR   00B0H.1 A   
+P3_2 . . . . . . . . . . . . . . . .  B ADDR   00B0H.2 A   
+P3_3 . . . . . . . . . . . . . . . .  B ADDR   00B0H.3 A   
+P3_4 . . . . . . . . . . . . . . . .  B ADDR   00B0H.4 A   
+P3_5 . . . . . . . . . . . . . . . .  B ADDR   00B0H.5 A   
+P3_6 . . . . . . . . . . . . . . . .  B ADDR   00B0H.6 A   
+P3_7 . . . . . . . . . . . . . . . .  B ADDR   00B0H.7 A   
+PCON . . . . . . . . . . . . . . . .  D ADDR   0087H   A   
+PS . . . . . . . . . . . . . . . . .  B ADDR   00B8H.4 A   
+PSW. . . . . . . . . . . . . . . . .  D ADDR   00D0H   A   
+PT0. . . . . . . . . . . . . . . . .  B ADDR   00B8H.1 A   
+PT1. . . . . . . . . . . . . . . . .  B ADDR   00B8H.3 A   
+PT2. . . . . . . . . . . . . . . . .  B ADDR   00B8H.5 A   
+PX0. . . . . . . . . . . . . . . . .  B ADDR   00B8H.0 A   
+PX1. . . . . . . . . . . . . . . . .  B ADDR   00B8H.2 A   
+RB8. . . . . . . . . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H . . . . . . . . . . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . . . . . . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . . . . . . . . . . .  B ADDR   00C8H.5 A   
+RD . . . . . . . . . . . . . . . . .  B ADDR   00B0H.7 A   
+REN. . . . . . . . . . . . . . . . .  B ADDR   0098H.4 A   
+RET?548. . . . . . . . . . . . . . .  D ADDR   0000H   R   SEG=?DT?DS18B20_READ_TEMPERATURE?DS18B20
+RI . . . . . . . . . . . . . . . . .  B ADDR   0098H.0 A   
+RS0. . . . . . . . . . . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . . . . . . . . . . .  B ADDR   00D0H.4 A   
+RXD. . . . . . . . . . . . . . . . .  B ADDR   00B0H.0 A   
+SBUF . . . . . . . . . . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . . . . . . . . . . .  D ADDR   0098H   A   
+SM0. . . . . . . . . . . . . . . . .  B ADDR   0098H.7 A   
+SM1. . . . . . . . . . . . . . . . .  B ADDR   0098H.6 A   
+A51 MACRO ASSEMBLER  DS18B20                                                              02/07/2020 12:42:02 PAGE    15
+
+SM2. . . . . . . . . . . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . . . . . . . . . . .  D ADDR   0081H   A   
+T0 . . . . . . . . . . . . . . . . .  B ADDR   00B0H.4 A   
+T1 . . . . . . . . . . . . . . . . .  B ADDR   00B0H.5 A   
+T2 . . . . . . . . . . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . . . . . . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . . . . . . . . . . .  B ADDR   0090H.1 A   
+T2MOD. . . . . . . . . . . . . . . .  D ADDR   00C9H   A   
+TB8. . . . . . . . . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK . . . . . . . . . . . . . . . .  B ADDR   00C8H.4 A   
+TCON . . . . . . . . . . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . . . . . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . . . . . . . . . . .  B ADDR   0088H.7 A   
+TF2. . . . . . . . . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0. . . . . . . . . . . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . . . . . . . . . . .  D ADDR   008DH   A   
+TH2. . . . . . . . . . . . . . . . .  D ADDR   00CDH   A   
+TI . . . . . . . . . . . . . . . . .  B ADDR   0098H.1 A   
+TL0. . . . . . . . . . . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . . . . . . . . . . .  D ADDR   008BH   A   
+TL2. . . . . . . . . . . . . . . . .  D ADDR   00CCH   A   
+TMOD . . . . . . . . . . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . . . . . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . . . . . . . . . . .  B ADDR   0088H.6 A   
+TR2. . . . . . . . . . . . . . . . .  B ADDR   00C8H.2 A   
+TXD. . . . . . . . . . . . . . . . .  B ADDR   00B0H.1 A   
+WR . . . . . . . . . . . . . . . . .  B ADDR   00B0H.6 A   
+_DELAY_US. . . . . . . . . . . . . .  C ADDR   -----       EXT
+_DS18B20_WRITE_BYTE. . . . . . . . .  C ADDR   0007H   R   SEG=?PR?_DS18B20_WRITE_BYTE?DS18B20
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,78 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              02/07/2020 18:32:12 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\develop\KEIL5.28\C51\BIN\C51.EXE User\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Module) DEBUG OBJ
+                    -ECTEXTEND PRINT(.\Listings\main.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "delay.h"
+   3          #include "digital_tube.h"
+   4          #include "ds18b20.h"
+   5          void main(void)
+   6          {
+   7   1          unsigned char i,ds18b20_status,temperature_data[4] = {0,0,0,0};
+   8   1              unsigned short temperature_data_math;
+   9   1              unsigned long count=0;
+  10   1              ds18b20_status = ds18b20_init();
+  11   1              for(i = 0;i < 4; i++)
+  12   1              {
+  13   2                      temperature_data[i] = ds18b20_status?ds18b20_status:16;
+  14   2              }
+  15   1          while(1)
+  16   1          {
+  17   2              unsigned char i;
+  18   2                      //显示刷新
+  19   2                      if(ds18b20_status && !(count%20))//count控制读取间隔,理论count>30否则会出现无效的数据
+  20   2                      {
+  21   3                              ds18b20_conversion_start();
+  22   3                              ds18b20_read_status();
+  23   3                              temperature_data_math = ds18b20_read_temperature();
+  24   3                              if(temperature_data_math != 0x550 || count>=300)//保证第一次显示的就为有效数据
+  25   3                              {
+  26   4                                      //数据处理
+  27   4                                      temperature_data[0] = (temperature_data_math&0xf000)?16:17;//符号位显示
+  28   4                                      if(temperature_data[0] == 16)//负数
+  29   4                                      {
+  30   5                                              temperature_data_math = (~temperature_data_math)+1;
+  31   5                                      }
+  32   4                                      temperature_data[1]=((temperature_data_math>>4)/10)>10?9:((temperature_data_math>>4)/10);//越界处理
+  33   4                                      temperature_data[2]=((temperature_data_math>>4)%10)>10?9:((temperature_data_math>>4)%10);//越界处理
+  34   4      #if     0                       
+                                              //粗糙处理
+                                              temperature_data[3]=((temperature_data_math&0xf)*10)/16;//小数位处理
+              #else
+  38   4                                      //四舍五入处理
+  39   4                                      temperature_data[3]=((temperature_data_math&0xf)*10)%16>8?((temperature_data_math&0xf)*10)/16+1:((temp
+             -erature_data_math&0xf)*10)/16;//小数位处理
+  40   4      #endif
+  41   4                              }
+  42   3                      }
+  43   2              for(i = 0; i < 4; i++)//动态显示控制
+  44   2              {
+  45   3                  move_display_num_CA(temperature_data[i], i ,i==2?1:0);
+  46   3                              delay_ms(10);
+  47   3              }
+  48   2                      count++;
+  49   2          }
+  50   1      
+  51   1      }
+
+
+C51 COMPILER V9.60.0.0   MAIN                                                              02/07/2020 18:32:12 PAGE 2   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    420    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      12
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

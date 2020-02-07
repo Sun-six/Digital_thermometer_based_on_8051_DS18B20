@@ -1,0 +1,7 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\ds18b20.obj",
+".\Objects\digital_tube.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\8051_or_ds18b20" 
+PRINT(".\Listings\8051_or_ds18b20.m51") RAMSIZE(256) 
